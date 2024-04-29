@@ -11,9 +11,9 @@ import {
     IconButton,
     Stack
 } from "@mui/material";
-import {Product} from "../../../data/Product";
-import {Star, StarBorder} from "@mui/icons-material";
-import {Category} from "../../../data/Category";
+import { Product } from "../../../data/Product";
+import { Star, StarBorder } from "@mui/icons-material";
+import { Category } from "../../../data/Category";
 import { useNavigate } from 'react-router-dom';
 
 interface CategoryCardProps {
@@ -25,20 +25,20 @@ export function CategoryCard({ category }: CategoryCardProps) {
     return (
         <Card >
             <CardActionArea onClick={() =>
-            navigate(`/shop?categoryIds=${category.id}`)
-        }>
-            <img
-                src={category.image_link}
-                style={{
-                    borderRadius: '5px',
-                    marginBottom: '10px',
-                    maxWidth: '300px', 
-                    maxHeight: '400px', 
-                    objectFit: 'contain',
-                }}
-                alt={category.id+category.name}
-            />
-            <Typography variant={'h5'}>{category.name}</Typography>
+                navigate(`/shop?categoryIds=${category.id}`)
+            }>
+                <img
+                    src={category.image_link}
+                    style={{
+                        borderRadius: '5px',
+                        marginBottom: '10px',
+                        maxWidth: '300px',
+                        maxHeight: '400px',
+                        objectFit: 'contain',
+                    }}
+                    alt={category.id + category.name}
+                />
+                <Typography variant={'h5'}>{category.name}</Typography>
             </CardActionArea>
 
         </Card>

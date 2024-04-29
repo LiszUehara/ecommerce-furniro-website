@@ -22,9 +22,9 @@ const Header = () => {
         if (matchedButton) {
             setHighlightedButton(matchedButton.index);
         } else {
-            if(location.pathname.includes('/shop')){
+            if (location.pathname.includes('/shop')) {
                 setHighlightedButton(1)
-            }else{
+            } else {
                 setHighlightedButton(5);
             }
 
@@ -36,7 +36,7 @@ const Header = () => {
         <Grid container spacing={3} alignItems="center" justifyContent="space-between" paddingY={3} paddingX={10}>
             <Grid item xs={1}>
                 <Stack direction="row" alignItems={'center'}>
-                    <img src={'/logo.png'} alt="logo" width={'50'}/>
+                    <img src={'/logo.png'} alt="logo" width={'50'} />
                     <Typography variant={'h5'}>Furniro</Typography>
                 </Stack>
             </Grid>

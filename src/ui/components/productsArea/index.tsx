@@ -49,14 +49,14 @@ export const ProductsArea = ({ products, isPagination, limitActive }: ProductsAr
                         Show More
                     </Button>
                 )}
-                {isPagination &&  (
+                {isPagination && (
                     <Pagination
-                    count={Math.ceil(products?.length / limit)}  // Calculate total number of pages based on data length and limit
-                    page={page}
-                    onChange={(event, value) => setPage(value)}
-                    variant="outlined"
-                    shape="rounded"
-                />
+                        count={Math.ceil(products?.length / limit)}  // Calculate total number of pages based on data length and limit
+                        page={page}
+                        onChange={(event, value) => setPage(value)}
+                        variant="outlined"
+                        shape="rounded"
+                    />
                 )
 
                 }

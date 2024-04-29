@@ -11,7 +11,7 @@ import {
     IconButton,
     Stack
 } from "@mui/material";
-import {Product} from "../../../data/Product";
+import { Product } from "../../../data/Product";
 import {
     CompareArrowsOutlined,
     FavoriteBorderOutlined,
@@ -45,13 +45,13 @@ export function ProductCard({ product }: ProductCardProps) {
         >
             <CardActionArea>
 
-                        <CardMedia
-                            component="img"
-                            height="300"
-                            image={product.image_link}
-                            alt={product.name}
-                        />
-                <CardContent  style={{ textAlign: 'left' }}>
+                <CardMedia
+                    component="img"
+                    height="300"
+                    image={product.image_link}
+                    alt={product.name}
+                />
+                <CardContent style={{ textAlign: 'left' }}>
                     <Typography gutterBottom variant="h5" component="div">
                         {product.name}
                     </Typography>
@@ -126,10 +126,10 @@ export function ProductCard({ product }: ProductCardProps) {
                     }}
                 >
                     <Box
-                        sx={{ display: 'flex', marginBottom: '8px', width: '70%'}}
+                        sx={{ display: 'flex', marginBottom: '8px', width: '70%' }}
                     >
                         <Button
-                            sx={{ flex: 1, backgroundColor: 'white', color: '#B88E2F', width: '70%'  }}
+                            sx={{ flex: 1, backgroundColor: 'white', color: '#B88E2F', width: '70%' }}
                             href={`/shop/${product.id}`}
                         >
                             See Details
@@ -138,19 +138,19 @@ export function ProductCard({ product }: ProductCardProps) {
                     <Box sx={{ display: 'flex' }}>
                         <Button
                             startIcon={<ShareOutlined />}
-                            style={{color: 'white'}}
+                            style={{ color: 'white' }}
                         >
                             Share
                         </Button>
                         <Button
                             startIcon={<CompareArrowsOutlined />}
-                            style={{color: 'white'}}
+                            style={{ color: 'white' }}
                         >
                             Compare
                         </Button>
                         <Button
-                            startIcon={<FavoriteBorderOutlined/>}
-                            style={{color: 'white'}}
+                            startIcon={<FavoriteBorderOutlined />}
+                            style={{ color: 'white' }}
                         >
                             Like
                         </Button>

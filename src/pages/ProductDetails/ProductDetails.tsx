@@ -11,11 +11,11 @@ import {
   Unstable_NumberInput as BaseNumberInput,
   NumberInputProps,
 } from "@mui/base/Unstable_NumberInput";
-import {EcommerceFeaturesArea} from "../../ui/components/ecommerceFeaturesArea";
-import {Facebook, KeyboardArrowRight, LinkedIn, Twitter} from "@mui/icons-material";
+import { EcommerceFeaturesArea } from "../../ui/components/ecommerceFeaturesArea";
+import { Facebook, KeyboardArrowRight, LinkedIn, Twitter } from "@mui/icons-material";
 import useAxios from "../../data/hooks/useAxios";
 import { axiosIntance } from "../../data/helper/axiox-instance";
-import { useNavigate, useParams  } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // #F9F1E7
 // background: #B88E2F;
 
@@ -307,7 +307,7 @@ export const ProductExpanded = ({ product }: ProductExpandedProps) => {
           <Typography
             textAlign={"left"}
             color={"grey"}
-            //   sx={{ fontSize: "1.5rem" }}
+          //   sx={{ fontSize: "1.5rem" }}
           >
             Color
           </Typography>
@@ -570,7 +570,7 @@ interface RelatedProductsProps {
 export const RelatedProducts = ({ relatedProducts }: RelatedProductsProps) => {
   const navigate = useNavigate();
   const [limitActive, setLimitActive] = useState(relatedProducts.length > 4 || relatedProducts.length > 7);
-  const [limit,setLimit] = useState(4)
+  const [limit, setLimit] = useState(4)
 
   return (
     <Grid
@@ -607,9 +607,9 @@ export const RelatedProducts = ({ relatedProducts }: RelatedProductsProps) => {
         {limitActive && (
           <Button
             onClick={() => {
-              if(limit!=8){
+              if (limit != 8) {
                 setLimit(8)
-              }else{
+              } else {
                 navigate(`/shop?categoryIds=${relatedProducts[0]?.category_id}`)
               }
             }}
@@ -700,7 +700,7 @@ export const ProductDetails = () => {
     axiosIntance: axiosIntance,
     method: 'GET',
     url: `products/${productId}`
-});
+  });
 
   return (
     <>
@@ -709,11 +709,11 @@ export const ProductDetails = () => {
 
       {!loading && <>
         <ProductExpanded product={data} />
-      <InfoProduct
-        textAddInformation={data?.description}
-        textDescription={data?.description}
-      />
-      <RelatedProducts relatedProducts={data?.relatedProducts} />
+        <InfoProduct
+          textAddInformation={data?.description}
+          textDescription={data?.description}
+        />
+        <RelatedProducts relatedProducts={data?.relatedProducts} />
       </>}
 
       <EcommerceFeaturesArea />

@@ -14,12 +14,12 @@ import {
     Typography
 } from "@mui/material";
 import Header from "../../ui/components/header";
-import {GridViewRounded, KeyboardArrowRight, Tune, ViewDayOutlined} from "@mui/icons-material";
-import {Product} from "../../data/Product";
-import {SetStateAction, useEffect, useState} from "react";
-import {ProductCard} from "../../ui/components/productCard";
-import {EcommerceFeaturesArea} from "../../ui/components/ecommerceFeaturesArea";
-import {Footer} from "../../ui/components/footer";
+import { GridViewRounded, KeyboardArrowRight, Tune, ViewDayOutlined } from "@mui/icons-material";
+import { Product } from "../../data/Product";
+import { SetStateAction, useEffect, useState } from "react";
+import { ProductCard } from "../../ui/components/productCard";
+import { EcommerceFeaturesArea } from "../../ui/components/ecommerceFeaturesArea";
+import { Footer } from "../../ui/components/footer";
 import { axiosIntance } from "../../data/helper/axiox-instance";
 import useAxios from "../../data/hooks/useAxios";
 import { Category } from "../../data/Category";
@@ -51,44 +51,44 @@ export const ShopPage = () => {
     const [categoryIds, setCategoryIds] = useState<number[]>([]);
 
 
-    useEffect(()=>{
-        if(paramValue){
+    useEffect(() => {
+        if (paramValue) {
             setCategoryIds([parseInt(paramValue)])
         }
-    },[])
+    }, [])
 
 
     const handleOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
-  
-    const handleFilterApply = () => {
-      handleClose();
-    };
-  
-    const handleNewChange = (event : any) => {
-      setIsNew(event.target.checked);
+        setOpen(true);
     };
 
-    const handleNotNewChange = (event : any) => {
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleFilterApply = () => {
+        handleClose();
+    };
+
+    const handleNewChange = (event: any) => {
+        setIsNew(event.target.checked);
+    };
+
+    const handleNotNewChange = (event: any) => {
         setIsNotNew(event.target.checked);
-      };
-  
-    const handleCategoryChange = (event : any) => {
-      const categoryId = parseInt(event.target.name, 10);
-      if (event.target.checked) {
-        setCategoryIds([...categoryIds, categoryId]);
-      } else {
-        setCategoryIds(categoryIds.filter(id => id !== categoryId));
-      }
+    };
+
+    const handleCategoryChange = (event: any) => {
+        const categoryId = parseInt(event.target.name, 10);
+        if (event.target.checked) {
+            setCategoryIds([...categoryIds, categoryId]);
+        } else {
+            setCategoryIds(categoryIds.filter(id => id !== categoryId));
+        }
     };
 
     const changeShortBy = (event: any) => {
-       setShortBy(event.target.value);
+        setShortBy(event.target.value);
     };
 
     const changeShowQtd = (event: any) => {
@@ -99,19 +99,19 @@ export const ShopPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-          const result = await axiosIntance.get(`products?page=${page}&limit=${limit}${isNew && !isNotNew ? '&isNew=true' : isNotNew && !isNew ? '&isNew=false' : ''}&categoryIds=${categoryIds.join(',')}&order=${shortBy}`);
-          setData(result.data);
+            const result = await axiosIntance.get(`products?page=${page}&limit=${limit}${isNew && !isNotNew ? '&isNew=true' : isNotNew && !isNew ? '&isNew=false' : ''}&categoryIds=${categoryIds.join(',')}&order=${shortBy}`);
+            setData(result.data);
         };
-    
-        fetchData();
-      }, [page, limit, isNew, isNotNew, categoryIds,shortBy ]);
 
-    
+        fetchData();
+    }, [page, limit, isNew, isNotNew, categoryIds, shortBy]);
+
+
     const FilterBar = ({ page, limit, total }: { page: number, limit: number, total: number }) => {
-            
+
         const startIndex = (page - 1) * limit + 1;
         const endIndex = Math.min(page * limit, total);
-    
+
         return (
             <Grid
                 bgcolor={"#F9F1E7"}
@@ -124,24 +124,24 @@ export const ShopPage = () => {
                     fontSize: "18px",
                 }}
                 container spacing={2}>
-    
+
                 <Grid item xs={8}>
                     <Stack direction={'row'} spacing={2} alignItems="center" >
-                        
-                        <Button onClick={handleOpen} sx={{color: 'black'}} startIcon={<Tune/>}>
-                        <Typography sx={{textTransform: 'none'}}>Filter</Typography>
+
+                        <Button onClick={handleOpen} sx={{ color: 'black' }} startIcon={<Tune />}>
+                            <Typography sx={{ textTransform: 'none' }}>Filter</Typography>
                         </Button>
-                        <GridViewRounded/>
-                        <ViewDayOutlined/>
-                        <Divider orientation={'vertical'}/>
+                        <GridViewRounded />
+                        <ViewDayOutlined />
+                        <Divider orientation={'vertical'} />
                         <Typography>Showing {startIndex}–{endIndex} of {total} results</Typography>
                     </Stack>
-    
+
                 </Grid>
                 <Grid item xs={4}>
                     <Stack direction={'row'} alignItems="center" justifyContent="center">
                         <Typography>Show</Typography>
-                        <FormControl sx={{ m: 1, minWidth: 120, bgcolor: 'white'}}>
+                        <FormControl sx={{ m: 1, minWidth: 120, bgcolor: 'white' }}>
                             <Select
                                 displayEmpty
                                 value={showQtd}
@@ -150,11 +150,11 @@ export const ShopPage = () => {
                                 <MenuItem value={'8'}>8</MenuItem>
                                 <MenuItem value={'16'}>16</MenuItem>
                                 <MenuItem value={'32'}>32</MenuItem>
-    
+
                             </Select>
                         </FormControl>
                         <Typography>Short by</Typography>
-                        <FormControl sx={{ m: 1, minWidth: 120, bgcolor: 'white'}}>
+                        <FormControl sx={{ m: 1, minWidth: 120, bgcolor: 'white' }}>
                             <Select
                                 displayEmpty
                                 value={shortBy}
@@ -166,10 +166,10 @@ export const ShopPage = () => {
                             </Select>
                         </FormControl>
                     </Stack>
-    
+
                 </Grid>
-    
-    
+
+
             </Grid>
         );
     };
@@ -184,7 +184,7 @@ export const ShopPage = () => {
 
     const ProductsArea = ({ products, isPagination }: ProductsAreaProps) => {
         const [limitActive, setLimitActive] = useState(products?.meta?.itemCount > 4);
-        
+
         return (
             <Grid container>
                 <Grid item container rowSpacing={3} justifyContent="left" paddingX={20}>
@@ -229,53 +229,53 @@ export const ShopPage = () => {
                         />
                     )}
                 </Grid>
-    
+
             </Grid>
         );
     };
 
-    return(
+    return (
         <>
             <Header />
             <Modal open={open} onClose={handleClose}>
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 400,
-            bgcolor: 'background.paper',
-            boxShadow: 24,
-            p: 4,
-          }}
-        >
-          <Typography variant="h6" gutterBottom>
-            Filters
-          </Typography>
-          <FormGroup>
-            <FormControlLabel
-              control={<Checkbox checked={isNew} onChange={handleNewChange} />}
-              label="Is New"
-            />
-            <FormControlLabel
-              control={<Checkbox checked={isNotNew} onChange={handleNotNewChange} />}
-              label="Is Not New"
-            />
-            {categories?.map((category: Category) => (
-              <FormControlLabel
-                key={category.id}
-                control={<Checkbox checked={categoryIds.includes(category.id)} onChange={handleCategoryChange} name={category.id.toString()} />}
-                label={`[${category.id}] ${category.name}`}
-              />
-            ))}
-          </FormGroup>
-          <Button onClick={handleFilterApply}>Apply Filters</Button>
-          <Button onClick={handleClose}>Close</Button>
-        </Box>
-      </Modal>
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 400,
+                        bgcolor: 'background.paper',
+                        boxShadow: 24,
+                        p: 4,
+                    }}
+                >
+                    <Typography variant="h6" gutterBottom>
+                        Filters
+                    </Typography>
+                    <FormGroup>
+                        <FormControlLabel
+                            control={<Checkbox checked={isNew} onChange={handleNewChange} />}
+                            label="Is New"
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={isNotNew} onChange={handleNotNewChange} />}
+                            label="Is Not New"
+                        />
+                        {categories?.map((category: Category) => (
+                            <FormControlLabel
+                                key={category.id}
+                                control={<Checkbox checked={categoryIds.includes(category.id)} onChange={handleCategoryChange} name={category.id.toString()} />}
+                                label={`[${category.id}] ${category.name}`}
+                            />
+                        ))}
+                    </FormGroup>
+                    <Button onClick={handleFilterApply}>Apply Filters</Button>
+                    <Button onClick={handleClose}>Close</Button>
+                </Box>
+            </Modal>
             <Box
-                sx={{backgroundImage: 'url("/shopBg.jpg")'}}
+                sx={{ backgroundImage: 'url("/shopBg.jpg")' }}
                 flexDirection={"column"}
                 height={200}
                 display="flex"
@@ -315,10 +315,10 @@ export const ShopPage = () => {
             </Box>
             <FilterBar page={data?.meta?.page ?? 1} limit={data?.meta?.limit ?? 0} total={data?.meta?.total ?? 0} />
             {
-                loading ? <CircularProgress /> : <ProductsArea products={data} isPagination={true}/>
+                loading ? <CircularProgress /> : <ProductsArea products={data} isPagination={true} />
             }
-            <EcommerceFeaturesArea/>
-            <Footer/>
+            <EcommerceFeaturesArea />
+            <Footer />
         </>
     )
 }
