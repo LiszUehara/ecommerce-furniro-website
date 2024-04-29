@@ -590,7 +590,7 @@ export const RelatedProducts = ({ relatedProducts }: RelatedProductsProps) => {
           Related Products
         </Typography>
       </Grid>
-      <Grid item container rowSpacing={3} justifyContent="left" paddingX={20}>
+      <Grid item container spacing={3} justifyContent="left" paddingX={20}>
         {relatedProducts.map((product, index) => {
           if (index < limit || !limitActive) {
             return (

@@ -187,7 +187,7 @@ export const ShopPage = () => {
 
         return (
             <Grid container>
-                <Grid item container rowSpacing={3} justifyContent="left" paddingX={20}>
+                <Grid item container spacing={3} justifyContent="left" paddingX={20}>
                     {products?.data.map((product, index) => {
                         if (index < limit || !limitActive) {
                             return (
@@ -200,7 +200,7 @@ export const ShopPage = () => {
                         }
                     })}
                 </Grid>
-                <Grid item mb={10} mt={4}>
+                <Grid item mb={10} mt={4} sx={{ textAlign: 'center', margin: 'auto' }} padding={4}>
                     {limitActive && !isPagination && (
                         <Button
                             onClick={() => setLimitActive(false)}
@@ -229,6 +229,7 @@ export const ShopPage = () => {
                         />
                     )}
                 </Grid>
+
 
             </Grid>
         );
